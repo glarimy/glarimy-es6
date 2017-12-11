@@ -1,0 +1,25 @@
+npm install --save-dev babel-cli
+npm install --save-dev babel-preset-es2015 babel-preset-stage-2
+npm install --save-dev nodemon
+npm init
+--------------
+package.json
+{
+  "name": "glarimy-es6-12",
+  "version": "1.0.0",
+  "description": "Demonstrates ES6 Modules",
+  "main": "glarimy.js",
+  "scripts": {
+    "start": "nodemon glarimy.js --exec babel-node --presets es2015,stage-2",
+    "build": "babel glarimy.js Contact.js Directory.js Error.js Utils.js -d dist --presets es2015,stage-2",
+    "serve": "node dist/glarimy.js"
+  },
+  "author": "Krishna Mohan Koyya",
+  "license": "ISC"
+}
+----------------
+"start": "babel-node glarimy.js --presets es2015,stage-2",
+----------------
+npm start
+npm run build
+npm build serve
