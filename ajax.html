@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Javascript Training</title>
+        <script type='text/javascript'>
+            function fetchUsers(){
+                let xhr = new XMLHttpRequest();
+                xhr.open("get", "users.json", true);
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4 && xhr.status == 200){
+                        let data = JSON.parse(xhr.responseText);
+                        let html = "<ul>";
+                        data.users.forEach(user => {
+                            html += "<li>" + user.name + "</li>"
+                        });
+                        html += "</ul>";
+                        document.getElementById('response').innerHTML = html;
+                    }
+                }
+                xhr.send();
+            }
+        </script>        
+    </head>
+    <body>
+           <input onClick='fetchUsers()' type='submit' value='Get List'/>
+           <div id='response'></div>
+    </form>
+    </body>
+
+</html>

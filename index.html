@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Javascript Training</title>
+        <script type='text/javascript'>
+            addEventListener('load', () => {
+                document.getElementById('btn').addEventListener("click", () => {
+                    let username = document.getElementById('username').value;
+                    if(username ==undefined || username == null || username.trim().length == 0){
+                        document.getElementById("error").innerHTML = "Invalid name";
+                    }else{
+                        document.getElementById("error").innerHTML = "";
+                        console.log("username: " + username.toUpperCase());
+                        document.getElementById('response').innerHTML = " Hello " + username.toUpperCase() + "!";
+                    }
+                });
+            });
+        </script>        
+    </head>
+    <body>
+        <h1>Javascript Training</h1><hr/>
+        Enter Name: <input type='text' placeholder="full name" id='username'/>
+        <button id='btn'>Go</button>        
+        <span id='error' style='color: red'></span>
+        <hr/>
+        <div id='response'></div>
+    </body>
+
+</html>

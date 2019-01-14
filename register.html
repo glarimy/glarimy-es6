@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Javascript Training</title>
+        <script type='text/javascript'>
+            addEventListener('load', () => {
+                document.getElementById('form').style.display = 'block';
+                document.getElementById('response').style.display = 'none';
+
+                document.getElementById('another').addEventListener("click", ()=> {
+                    document.getElementById('username').value = "";
+                    document.getElementById('password').value = "";
+                    document.getElementById('form').style.display = 'block';
+                    document.getElementById('response').style.display = 'none';                    
+                });
+
+                document.getElementById('reset').addEventListener("click", ()=> {
+                    document.getElementById('username').value = "";
+                    document.getElementById('password').value = "";
+                });
+
+                document.getElementById('register').addEventListener("click", () => {
+                    let errors = {
+                        username: false,
+                        password: false
+                    };
+                    let username = document.getElementById('username').value;
+                    if(username == undefined || username == null || username.trim().length == 0){
+                        document.getElementById("username-error").innerHTML = "Invalid name";
+                        errors.username = true;
+                    }else{
+                        document.getElementById("username-error").innerHTML = "";
+                        errors.username = false;
+                    }
+                    let password = document.getElementById('password').value;
+                    if(password == undefined || password == null || password.trim().length == 0){
+                        document.getElementById("password-error").innerHTML = "Invalid password";
+                        errors.password = true;
+                    }else{
+                        document.getElementById("password-error").innerHTML = "";
+                        errors.password = false;
+                    }
+                    if(!errors.username && !errors.password){
+                        if(username == password){
+                            document.getElementById('error').innerHTML = "Username and password can not be same!";
+                        }else{
+                            document.getElementById('error').innerHTML = "";
+                            document.getElementById('form').style.display = 'none';
+                            document.getElementById('uname').innerHTML = username;
+                            document.getElementById('response').style.display = 'block';
+                        }
+                    }
+                });
+            });
+        </script>        
+    </head>
+    <body>
+        <h1>Register</h1><hr/>
+        <div id='form'>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td><input type='text' placeholder="full name" id='username'/></td>
+                    <td><span id='username-error' style='color: red'></span></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type='text' placeholder="password" id='password'/></td>
+                    <td><span id='password-error' style='color: red'></span></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"><span id='error' style='color: red'></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button id='register'>Register</button>
+                        <button id='reset'>Reset</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>  
+        </div>
+        <div id='response'>
+            <div><span id='uname'></span> is registered successfully!<span></div>
+            <button id='another'>Register Another User</button>
+        </div>
+    </body>
+
+</html>
